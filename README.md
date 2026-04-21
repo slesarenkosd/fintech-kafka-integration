@@ -142,3 +142,27 @@ CRM / Ledger / Notifications
 ```bash
 Ctrl + C
 ``` 
+### 12. Дополнительное задание — Request-Reply
+
+Созданы дополнительные топики:
+
+```bash
+transaction.status.requests
+transaction.status.replies
+```
+Запуск обработчика статусов:
+```bash
+python3 consumers/status_service.py
+```
+Запуск REST API:
+```bash
+uvicorn api.status_api:app --reload
+```
+Проверка через браузер:
+```bash
+http://127.0.0.1:8000/docs
+```
+Эндпоинт:
+```bash
+GET /status/{transaction_id}
+```
