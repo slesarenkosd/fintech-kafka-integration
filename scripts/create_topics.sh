@@ -8,6 +8,8 @@ docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-n
 docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-not-exists --topic notifications --partitions 1 --replication-factor 1
 docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-not-exists --topic ledger.events --partitions 1 --replication-factor 1
 docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-not-exists --topic crm.updates --partitions 1 --replication-factor 1
+docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-not-exists --topic transaction.status.requests --partitions 1 --replication-factor 1
+docker exec kafka kafka-topics --bootstrap-server localhost:9092 --create --if-not-exists --topic transaction.status.replies --partitions 1 --replication-factor 1
 
 echo "Done. Existing topics:"
 docker exec kafka kafka-topics --bootstrap-server localhost:9092 --list
