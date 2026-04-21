@@ -1,41 +1,55 @@
 # FinTech Kafka Integration
 
-Учебный проект по интеграции систем на базе Apache Kafka.
+Учебный проект по интеграции систем с использованием Apache Kafka.
 
-## Описание
-В рамках задания реализуется прототип интеграционного решения для финансовой компании с использованием Apache Kafka.
+## 📌 Описание
 
-## Используемые технологии
-- Docker
-- Docker Compose
+В рамках задания реализован прототип обработки финансовых транзакций с использованием потоковой архитектуры и паттернов интеграции:
+
+- Publish–Subscribe  
+- Content-Based Router  
+- Message Filter  
+
+Система имитирует работу финансовой платформы с антифрод-проверкой, маршрутизацией и обработкой событий.
+
+---
+
+## 🛠️ Технологии
+
+- Python 3.9+
 - Apache Kafka
 - Zookeeper
-- Python 3.9+
+- Docker / Docker Compose
+- kafka-python
 
-## Структура проекта
+---
 
-```text
+## 📁 Структура проекта
+
 fintech-kafka-integration/
 │
 ├── consumers/
+│   ├── fraud_detector.py
+│   ├── router.py
+│   ├── notification_consumer.py
+│   ├── ledger_consumer.py
+│   └── crm_consumer.py
+│
 ├── producers/
-├── models/
+│   └── transaction_producer.py
+│
 ├── scripts/
 │   └── create_topics.sh
+│
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
 
-docker compose up -d
-chmod +x scripts/create_topics.sh
-./scripts/create_topics.sh
+---
 
-docker exec kafka kafka-topics --bootstrap-server localhost:9092 --list
+## 🚀 Запуск проекта
 
-## Антифрод-сервис
-
-Запуск:
+### 1. Запуск Kafka и Zookeeper
 
 ```bash
-python3 consumers/fraud_detector.py
-
+docker compose up -d
