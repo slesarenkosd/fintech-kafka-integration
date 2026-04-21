@@ -31,3 +31,11 @@ chmod +x scripts/create_topics.sh
 ./scripts/create_topics.sh
 
 docker exec kafka kafka-topics --bootstrap-server localhost:9092 --list
+
+## Антифрод-сервис
+
+Запуск:
+
+```bash
+python3 consumers/fraud_detector.py
+
